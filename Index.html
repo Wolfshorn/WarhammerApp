@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40k Mission Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .mission-details {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 14px;
+            color: gray;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Warhammer 40k Mission Selector</h1>
+    <button id="selectMission">Mission auswählen</button>
+    
+    <!-- Bereich für die Missionsanzeige -->
+    <div id="mission" class="mission-details"></div>
+
+    <script>
+        document.getElementById('selectMission').addEventListener('click', function() {
+            // Arrays mit Missionen und ihren Beschreibungen
+            const primaryMissions = [
+                { name: 'Secure Objective', description: 'Erhalte Punkte, indem du bestimmte Ziele sicherst.' },
+                { name: 'Seize Ground', description: 'Kontrolliere so viel Gelände wie möglich.' },
+                { name: 'Engage on All Fronts', description: 'Teile deine Kräfte auf und dominiere verschiedene Sektoren.' },
+                { name: 'Dominate the Field', description: 'Erobere das zentrale Schlachtfeld und kontrolliere es.' },
+                { name: 'Hold the Line', description: 'Verteidige deine Aufstellungszone gegen feindliche Angriffe.' }
+            ];
+            const secondaryMissions = [
+                { name: 'Capture and Control', description: 'Erhalte Punkte für die Kontrolle von Missionszielen.' },
+                { name: 'Reconnaissance', description: 'Führe Aufklärungsmissionen durch, um Informationen zu sammeln.' },
+                { name: 'Linebreaker', description: 'Dringe in die feindliche Aufstellungszone ein und zerstöre die Verteidigung.' },
+                { name: 'First Blood', description: 'Verdiene dir Punkte, indem du die erste Einheit zerstörst.' },
+                { name: 'Kill and Capture', description: 'Zerstöre Feinde und erobere ihre Überreste.' }
+            ];
+            const gambitMissions = [
+                { name: 'Engage on Sight', description: 'Greife sofort an, sobald der Feind in Sichtweite ist.' },
+                { name: 'No Prisoners', description: 'Lass keine Überlebenden auf dem Schlachtfeld zurück.' },
+                { name: 'Last Stand', description: 'Verteidige deine Stellung bis zum letzten Mann.' },
+                { name: 'Kill Team', description: 'Eliminiere gezielt feindliche Eliteeinheiten.' },
+                { name: 'Kill Wound', description: 'Verursache so viel Schaden wie möglich und sichere den Sieg.' }
+            ];
+            const deploymentZones = [
+                { name: 'Urban', description: 'Kämpfe in dicht besiedelten städtischen Gebieten.' },
+                { name: 'Open Ground', description: 'Offene Flächen ohne Deckung erfordern präzise Taktiken.' },
+                { name: 'Ruins', description: 'Zerstörte Gebäude bieten taktische Deckung und strategische Vorteile.' },
+                { name: 'Jungle', description: 'Dichter Dschungel erschwert die Sicht und Bewegung.' },
+                { name: 'Fortification', description: 'Verteidige oder greife stark befestigte Positionen an.' }
+            ];
+
+            // Zufällige Auswahl der Missionen
+            const randomPrimary = primaryMissions[Math.floor(Math.random() * primaryMissions.length)];
+            const randomSecondary = secondaryMissions[Math.floor(Math.random() * secondaryMissions.length)];
+            const randomGambit = gambitMissions[Math.floor(Math.random() * gambitMissions.length)];
+            const randomZone = deploymentZones[Math.floor(Math.random() * deploymentZones.length)];
+
+            // Anzeige der ausgewählten Missionen mit Beschreibung
+            document.getElementById('mission').innerHTML = `
+                <p><strong>Primärmission:</strong> ${randomPrimary.name}</p>
+                <p class="description">${randomPrimary.description}</p>
+                <p><strong>Sekundärmission:</strong> ${randomSecondary.name}</p>
+                <p class="description">${randomSecondary.description}</p>
+                <p><strong>Gambit:</strong> ${randomGambit.name}</p>
+                <p class="description">${randomGambit.description}</p>
+                <p><strong>Einsatzzone:</strong> ${randomZone.name}</p>
+                <p class="description">${randomZone.description}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
