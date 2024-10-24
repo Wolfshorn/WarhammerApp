@@ -6,15 +6,44 @@
     <title>40k Mission Selector</title>
     <style>
         body {
-            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f1ef400-69e7-477c-ae9a-52a6bc82fed8/dd0qt5o-16e35e57-c641-47d8-9eb2-3c5fe717cc01.jpg/v1/fill/w_1239,h_645,q_70,strp/death_korp_behind_vraksian_lines_by_vookasheen_dd0qt5o-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTk5IiwicGF0aCI6IlwvZlwvNGYxZWY0MDAtNjllNy00NzdjLWFlOWEtNTJhNmJjODJmZWQ4XC9kZDBxdDVvLTE2ZTM1ZTU3LWM2NDEtNDdkOC05ZWIyLTNjNWZlNzE3Y2MwMS5qcGciLCJ3aWR0aCI6Ijw9MTkyMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.d0LSNtaZj6i3i2j4tsbNJ0mKZ6_iStDxWToZc6nN5_4'); /* Ersetze diesen Link mit deinem Bild */
-            background-size: cover; /* Deckt den gesamten Hintergrund ab */
-            background-position: center; /* Zentriert das Hintergrundbild */
+            position: relative; /* Für das Overlay */
             color: white; /* Weiße Schriftfarbe */
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
             min-height: 100vh; /* Damit der Hintergrund das gesamte Sichtfenster abdeckt */
             margin: 0; /* Entfernt den Standardmargin */
+            overflow: hidden; /* Verhindert Überlauf bei Overlay */
+        }
+
+        /* Hintergrundbild */
+        .background {
+            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f1ef400-69e7-477c-ae9a-52a6bc82fed8/dd0qt5o-16e35e57-c641-47d8-9eb2-3c5fe717cc01.jpg/v1/fill/w_1239,h_645,q_70,strp/death_korp_behind_vraksian_lines_by_vookasheen_dd0qt5o-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTk5IiwicGF0aCI6IlwvZlwvNGYxZWY0MDAtNjllNy00NzdjLWFlOWEtNTJhNmJjODJmZWQ4XC9kZDBxdDVvLTE2ZTM1ZTU3LWM2NDEtNDdkOC05ZWIyLTNjNWZlNzE3Y2MwMS5qcGciLCJ3aWR0aCI6Ijw9MTkyMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.d0LSNtaZj6i3i2j4tsbNJ0mKZ6_iStDxWToZc6nN5_4'); /* Ersetze diesen Link mit deinem Bild */
+            background-size: cover; /* Deckt den gesamten Hintergrund ab */
+            background-position: center; /* Zentriert das Hintergrundbild */
+            position: absolute; /* Absolute Position für das Overlay */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Hinter den anderen Elementen */
+        }
+
+        /* Dunkler Overlay */
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5); /* Schwarzer Overlay mit 50% Transparenz */
+            position: absolute; /* Absolute Position für das Overlay */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Über dem Hintergrundbild, aber unter dem Text */
+        }
+
+        h1 {
+            font-size: 3em; /* Größere Schriftgröße für die Überschrift */
+            color: #DAA520; /* Dunkelgoldene Schriftfarbe */
+            margin-bottom: 20px; /* Abstand unter der Überschrift */
         }
 
         button {
@@ -55,6 +84,8 @@
     </style>
 </head>
 <body>
+    <div class="background"></div>
+    <div class="overlay"></div>
     <h1>Warhammer 40k Mission Selector</h1>
     
     <div class="container">
