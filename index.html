@@ -6,11 +6,15 @@
     <title>40k Mission Selector</title>
     <style>
         body {
-            background-color: #3a3d2b; /* Dunkles Olivgrün */
+            background-image: url('https://artwork.40k.gallery/wp-content/uploads/2021/02/Astra-Militarum-1.jpg'); /* Ersetze diesen Link mit deinem Bild */
+            background-size: cover; /* Deckt den gesamten Hintergrund ab */
+            background-position: center; /* Zentriert das Hintergrundbild */
             color: white; /* Weiße Schriftfarbe */
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            min-height: 100vh; /* Damit der Hintergrund das gesamte Sichtfenster abdeckt */
+            margin: 0; /* Entfernt den Standardmargin */
         }
 
         button {
@@ -18,7 +22,7 @@
             font-size: 16px;
             cursor: pointer;
             margin: 5px;
-            background-color: #4b4e3d; /* Dunkles Olivgrün für Buttons */
+            background-color: rgba(75, 78, 61, 0.8); /* Dunkles Olivgrün für Buttons mit Transparenz */
             color: white; /* Weiße Schriftfarbe für Buttons */
             border: none;
             border-radius: 5px;
@@ -26,13 +30,16 @@
         }
 
         button:hover {
-            background-color: #5a5d4b; /* Helleres Olivgrün beim Hover */
+            background-color: rgba(90, 93, 75, 0.8); /* Helleres Olivgrün beim Hover mit Transparenz */
         }
 
         .mission-details {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.6); /* Halbtransparenter Hintergrund für Lesbarkeit */
+            padding: 15px;
+            border-radius: 10px; /* Runde Ecken für das Missionsfeld */
         }
 
         .description {
