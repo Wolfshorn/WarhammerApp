@@ -49,7 +49,9 @@
 
     <script>
         let primaryMissionGenerated = false;
+        let deploymentZoneGenerated = false;
         let primaryMission = null;
+        let deploymentZone = null;
 
         const primaryMissions = [
             { name: 'Secure Objective', description: 'Erhalte Punkte, indem du bestimmte Ziele sicherst.' },
@@ -81,6 +83,12 @@
         ];
 
         document.getElementById('selectMission').addEventListener('click', function() {
+            if (!deploymentZoneGenerated) {
+                // Einsatzzone nur einmal zufällig auswählen
+                deploymentZone = deploymentZones[Math.floor(Math.random() * deploymentZones.length)];
+                deploymentZoneGenerated = true;
+            }
+
             if (!primaryMissionGenerated) {
                 // Primärmission nur einmal zufällig auswählen
                 primaryMission = primaryMissions[Math.floor(Math.random() * primaryMissions.length)];
@@ -89,25 +97,26 @@
 
             const randomSecondary = secondaryMissions[Math.floor(Math.random() * secondaryMissions.length)];
             const randomGambit = gambitMissions[Math.floor(Math.random() * gambitMissions.length)];
-            const randomZone = deploymentZones[Math.floor(Math.random() * deploymentZones.length)];
 
             // Anzeige der ausgewählten Missionen mit Beschreibung
             document.getElementById('mission').innerHTML = `
+                <p><strong>Einsatzzone:</strong> ${deploymentZone.name}</p>
+                <p class="description">${deploymentZone.description}</p>
                 <p><strong>Primärmission:</strong> ${primaryMission.name}</p>
                 <p class="description">${primaryMission.description}</p>
                 <p><strong>Sekundärmission:</strong> ${randomSecondary.name}</p>
                 <p class="description">${randomSecondary.description}</p>
                 <p><strong>Gambit:</strong> ${randomGambit.name}</p>
                 <p class="description">${randomGambit.description}</p>
-                <p><strong>Einsatzzone:</strong> ${randomZone.name}</p>
-                <p class="description">${randomZone.description}</p>
             `;
         });
 
         document.getElementById('resetButton').addEventListener('click', function() {
-            // Primärmission zurücksetzen
+            // Primärmission und Einsatzzone zurücksetzen
             primaryMissionGenerated = false;
+            deploymentZoneGenerated = false;
             primaryMission = null;
+            deploymentZone = null;
             document.getElementById('mission').innerHTML = '';  // Missionsanzeige leeren
         });
     </script>
