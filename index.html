@@ -10,15 +10,15 @@
             color: white; /* Weiße Schriftfarbe */
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            padding: 20px; /* Reduzierte Padding für Mobilgeräte */
             min-height: 100vh; /* Damit der Hintergrund das gesamte Sichtfenster abdeckt */
             margin: 0; /* Entfernt den Standardmargin */
-            overflow: hidden; /* Verhindert Überlauf bei Overlay */
+            overflow: auto; /* Ermöglicht Scrollen */
         }
 
         /* Hintergrundbild */
         .background {
-            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f1ef400-69e7-477c-ae9a-52a6bc82fed8/dd0qt5o-16e35e57-c641-47d8-9eb2-3c5fe717cc01.jpg/v1/fill/w_1239,h_645,q_70,strp/death_korp_behind_vraksian_lines_by_vookasheen_dd0qt5o-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTk5IiwicGF0aCI6IlwvZlwvNGYxZWY0MDAtNjllNy00NzdjLWFlOWEtNTJhNmJjODJmZWQ4XC9kZDBxdDVvLTE2ZTM1ZTU3LWM2NDEtNDdkOC05ZWIyLTNjNWZlNzE3Y2MwMS5qcGciLCJ3aWR0aCI6Ijw9MTkyMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.d0LSNtaZj6i3i2j4tsbNJ0mKZ6_iStDxWToZc6nN5_4'); /* Ersetze diesen Link mit deinem Bild */
+            background-image: url('https://www.deviantart.com/vookasheen/art/Death-Korp-behind-Vraksian-lines-787311132'); /* Ersetze diesen Link mit deinem Bild */
             background-size: cover; /* Deckt den gesamten Hintergrund ab */
             background-position: center; /* Zentriert das Hintergrundbild */
             position: absolute; /* Absolute Position für das Overlay */
@@ -85,7 +85,24 @@
 
         .container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Stapelbuttons auf mobilen Geräten */
+            align-items: center; /* Zentriert die Buttons */
+        }
+
+        /* Responsive Anpassungen */
+        @media (min-width: 600px) {
+            .container {
+                flex-direction: row; /* Neben einander auf größeren Bildschirmen */
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 4em; /* Größere Schriftgröße für Desktop */
+            }
+
+            button {
+                font-size: 18px; /* Größere Schriftgröße für Buttons auf Desktop */
+            }
         }
     </style>
 </head>
