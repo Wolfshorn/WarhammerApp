@@ -353,4 +353,25 @@
             const randomSecondary = secondaryMissions[Math.floor(Math.random() * secondaryMissions.length)];
             const randomGambit = gambitMissions[Math.floor(Math.random() * gambitMissions.length)];
 
-            document.getElementById
+            document.getElementById('mission').innerHTML = `
+                <p><strong>Einsatzzone:</strong> ${deploymentZone.name}</p>
+                <p class="description">${deploymentZone.description}</p>
+                <p><strong>Primärmission:</strong> ${primaryMission.name}</p>
+                <p class="description">${primaryMission.description}</p>
+                <p><strong>Sekundärmission:</strong> ${randomSecondary.name}</p>
+                <p class="description">${randomSecondary.description}</p>
+                <p><strong>Gambit:</strong> ${randomGambit.name}</p>
+                <p class="description">${randomGambit.description}</p>
+            `;
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            primaryMissionGenerated = false;
+            deploymentZoneGenerated = false;
+            primaryMission = null;
+            deploymentZone = null;
+            document.getElementById('mission').innerHTML = '';
+        });
+    </script>
+</body>
+</html>
